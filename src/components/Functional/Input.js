@@ -22,9 +22,10 @@ export default class Input extends Component {
         const url = "about:blank";
         const newWindow = window.open(url, "_new");
         newWindow.document.open();
-        newWindow.document.write(`<html><head><<script>function step1(){setTimeout('step2()', 10);}</script></head><body onload='step1()'> 
-        <img src='${img}' /></body></html>`);
-        newWindow.print();
+        // newWindow.document.write(`<html><head><script>function step1(){setTimeout('step2()', 10);}</script></head><body onload='step1()'> 
+        // <img src='${img}' /></body></html>`);
+        newWindow.document.write(`<img src='${img}' />`)
+        // newWindow.print()
         console.log('Barcode printed', this.state.barcodeValue);
     }
 
