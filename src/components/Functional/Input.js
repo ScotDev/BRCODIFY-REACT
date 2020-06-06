@@ -3,9 +3,7 @@ import JsBarcode from 'jsbarcode'
 
 export default class Input extends Component {
 
-    state = { format: 'CODE128', BarcodeExists: false, input: 'Example code 12345', barcodeValue: 'Example code 12345', showWarning: false, errorMsg: 'No error' }
-
-
+    state = { format: 'CODE128', BarcodeExists: false, input: 'EXAMPLE CODE 12345', barcodeValue: 'EXAMPLE CODE 12345', showWarning: false, errorMsg: 'No error' }
 
     generateBarcode = (val, format) => {
         JsBarcode('#barcode', val, { format: format });
@@ -33,13 +31,13 @@ export default class Input extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        const defaultValue = 'Example code 12345';
+        const defaultValue = 'EXAMPLE CODE 12345';
         if (e.target.input.value.length > 50) {
             this.setState({ BarcodeExists: false, barcodeValue: this.state.input, input: defaultValue, showWarning: true, errorMsg: 'Code cannot be longer than 50 characters' })
         } else if (e.target.input.value.startsWith(' ')) {
             this.setState({ BarcodeExists: false, barcodeValue: this.state.input, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
         } else {
-            this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value, showWarning: false })
+            this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value.toUpperCase(), showWarning: false })
             this.generateBarcode(this.state.input, this.state.format);
         }
     }
@@ -51,7 +49,7 @@ export default class Input extends Component {
         } else if (e.target.value.startsWith(' ')) {
             this.setState({ barcodeValue: defaultValue, BarcodeExists: false, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
         } else {
-            this.setState({ barcodeValue: this.state.input, BarcodeExists: true, input: e.target.value })
+            this.setState({ barcodeValue: this.state.input, BarcodeExists: true, input: e.target.input.value.toUpperCase() })
         }
     }
 
