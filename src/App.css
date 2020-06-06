@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+
+:root {
+  --primary-color: #5fbaa7;
+  --dark-green: #578556;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans';
+  margin: 0;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  color: var(--dark-green);
+  text-align: center;
+  padding: 20px;
+}
+
+input {
+  margin-bottom: 3vh;
+  height: 35px;
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  outline: 0;
+  padding-left: 5px;
+  font-family: inherit;
+}
+
+.btn {
+  font-family: inherit;
+  border-radius: 5px;
+  outline: 0;
+  background-color: var(--dark-green);
+  color: #fff;
+  border: 0;
+  padding: 10px 15px;
+  font-size: 16px;
+  -moz-box-shadow: 3px 3px 5px #ccc;
+  -webkit-box-shadow: 3px 3px 5px #ccc;
+  box-shadow: 3px 3px 5px #ccc;
+  margin-bottom: 4vh;
+}
+
+.btn:hover {
+  -moz-box-shadow: 6px 6px 10px #ccc;
+  -webkit-box-shadow: 6px 6px 10px #ccc;
+  box-shadow: 6px 6px 10px #ccc;
+  cursor: pointer;
+}
+
+img#barcode {
+  height: 180px;
+  width: 450px;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  margin-bottom: 100px;
+}
+
+.revealed {
+  visibility: visible !important;
+}
+
+.credits a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-size: 12px;
+}
+
+.credits span {
+  font-size: 12px;
+}
+
+@media (max-width: 700px) {
+  img#barcode {
+    max-width: 90%;
+    margin-bottom: 40px;
+  }
+  .btn {
+    margin-bottom: 2vh;
+  }
+}
+
+@media (max-width: 350px) {
+  h1 {
+    font-size: 1.7em;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  img#barcode {
+    height: 90px;
+    margin-bottom: 15px;
+  }
+  input,
+  button {
+    width: 85%;
+  }
+  .btn {
+    margin-bottom: 2vh;
+    font-size: 14px;
+  }
+}
+
+@media (max-height: 700px) {
+  h1 {
+    font-size: 1.7em;
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  img#barcode {
+    max-width: 60%;
+    height: 20%;
+    margin-bottom: 15px;
+  }
+  .btn {
+    margin-bottom: 2vh;
+  }
+}
