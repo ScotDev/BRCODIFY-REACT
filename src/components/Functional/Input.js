@@ -20,12 +20,7 @@ export default class Input extends Component {
         const url = "about:blank";
         const newWindow = window.open(url, "_new");
         newWindow.document.open();
-        // newWindow.document.write(`<html><head><script>function step1(){setTimeout('step2()', 10);}</script></head><body onload='step1()'> 
-        // <img src='${img}' /></body></html>`);
-        newWindow.document.write(`<img src='${img}' />`)
-        // newWindow.close()
-        newWindow.focus()
-        // newWindow.print()
+        newWindow.document.write(`<img src='${img}' onload='window.print()' />`)
         console.log('Barcode printed', this.state.barcodeValue);
     }
 
@@ -57,7 +52,6 @@ export default class Input extends Component {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: false, errorMsg: 'Please enter a value' })
         } else {
             this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.value.toUpperCase(), showWarning: false })
-            // this.generateBarcode(this.state.input, this.state.format);
         }
     }
 
