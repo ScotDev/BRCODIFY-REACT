@@ -23,6 +23,8 @@ export default class Input extends Component {
         // newWindow.document.write(`<html><head><script>function step1(){setTimeout('step2()', 10);}</script></head><body onload='step1()'> 
         // <img src='${img}' /></body></html>`);
         newWindow.document.write(`<img src='${img}' />`)
+        // newWindow.close()
+        newWindow.focus()
         // newWindow.print()
         console.log('Barcode printed', this.state.barcodeValue);
     }
@@ -33,9 +35,11 @@ export default class Input extends Component {
         e.preventDefault();
         const defaultValue = 'EXAMPLE CODE 12345';
         if (e.target.input.value.length > 50) {
-            this.setState({ BarcodeExists: false, barcodeValue: this.state.input, input: defaultValue, showWarning: true, errorMsg: 'Code cannot be longer than 50 characters' })
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot be longer than 50 characters' })
         } else if (e.target.input.value.startsWith(' ')) {
-            this.setState({ BarcodeExists: false, barcodeValue: this.state.input, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
+        } else if (e.target.input.value.length < 1 | e.target.input.value.length === '') {
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Please enter a value' })
         } else {
             this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value.toUpperCase(), showWarning: false })
             this.generateBarcode(this.state.input, this.state.format);
@@ -43,15 +47,20 @@ export default class Input extends Component {
     }
 
     handleChange = e => {
-        const defaultValue = 'Example code 12345';
-        if (e.target.value.length < 1) {
-            this.setState({ barcodeValue: defaultValue, BarcodeExists: false, input: defaultValue, showWarning: false, errorMsg: 'Code must contain at least 1 character' })
+        e.preventDefault();
+        const defaultValue = 'EXAMPLE CODE 12345';
+        if (e.target.value.length > 50) {
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot be longer than 50 characters' })
         } else if (e.target.value.startsWith(' ')) {
-            this.setState({ barcodeValue: defaultValue, BarcodeExists: false, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
+        } else if (e.target.value.length < 1 | e.target.value.length === '') {
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: false, errorMsg: 'Please enter a value' })
         } else {
-            this.setState({ barcodeValue: this.state.input, BarcodeExists: true, input: e.target.input.value.toUpperCase() })
+            this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.value.toUpperCase(), showWarning: false })
+            // this.generateBarcode(this.state.input, this.state.format);
         }
     }
+
 
 
     render() {

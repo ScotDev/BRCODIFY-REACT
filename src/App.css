@@ -46,9 +46,9 @@ input {
 
 .warning {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   color: red;
-  margin-bottom: 2vh;
+  margin-bottom: 1.5vh;
 }
 
 .btn {
