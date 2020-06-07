@@ -6,7 +6,7 @@ export default class Input extends Component {
     state = { format: 'CODE128', BarcodeExists: false, input: 'EXAMPLE CODE 12345', barcodeValue: 'EXAMPLE CODE 12345', showWarning: false, errorMsg: 'No error' }
 
     generateBarcode = (val, format) => {
-        JsBarcode('#barcode', val, { format: format });
+        JsBarcode('#barcode', val, { format: format, fontOptions: "bold", font: "Open Sans" });
     }
 
     componentDidMount() {
