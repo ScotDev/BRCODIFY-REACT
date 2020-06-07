@@ -36,7 +36,7 @@ export default class Input extends Component {
         } else {
             this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value.toUpperCase(), showWarning: false })
             this.generateBarcode(this.state.input, this.state.format);
-            document.title = `BRCODIFY | ${this.state.barcodeValue}`
+            document.title = `BRCODIFY | ${this.state.input}`
         }
     }
 
