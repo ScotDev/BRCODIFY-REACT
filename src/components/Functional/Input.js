@@ -11,7 +11,6 @@ export default class Input extends Component {
 
     componentDidMount() {
         this.generateBarcode(this.state.barcodeValue, 'CODE128');
-        console.log(this.state.barcodeValue);
     }
 
     printBarcode = () => {
@@ -21,10 +20,8 @@ export default class Input extends Component {
         const newWindow = window.open(url, "_new");
         newWindow.document.open();
         newWindow.document.write(`<img src='${img}' onload='window.print()' />`)
-        console.log('Barcode printed', this.state.barcodeValue);
+        console.log('Barcode printed:', this.state.barcodeValue);
     }
-
-
 
     handleSubmit = e => {
         e.preventDefault();
@@ -35,6 +32,7 @@ export default class Input extends Component {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
         } else if (e.target.input.value.length < 1 | e.target.input.value.length === '') {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Please enter a value' })
+            this.generateBarcode(this.state.input, this.state.format);
         } else {
             this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value.toUpperCase(), showWarning: false })
             this.generateBarcode(this.state.input, this.state.format);

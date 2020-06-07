@@ -8,7 +8,7 @@ export default function Credits() {
             </a>
             <span> - powered by the </span>
             <a href="https://github.com/lindell/JsBarcode" rel="noopener noreferrer" target="_blank"
-            >JsBarcode library from Johan Lindell</a>
+            > JsBarcode library from Johan Lindell</a>
         </div>
     )
 }

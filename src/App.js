@@ -11,12 +11,17 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App container" >
-        <h1>BRCODIFY</h1>
-        <h2>A simple barcode generator</h2>
-        <h3>Format: {this.state.format}</h3>
-        <Input></Input>
-        <Credits></Credits>
+      <div className="App" >
+        <div className="skewed"></div>
+        <div className="container">
+          <div className="content">
+            <h1>BRCODIFY</h1>
+            <h2>A simple barcode generator</h2>
+            <h3>Format: {this.state.format}</h3>
+            <Input></Input>
+          </div>
+          <Credits></Credits>
+        </div>
       </div>
     )
   }
