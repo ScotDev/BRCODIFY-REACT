@@ -3,10 +3,10 @@ import JsBarcode from 'jsbarcode'
 
 export default class Input extends Component {
 
-    state = { format: 'CODE128', BarcodeExists: false, input: 'EXAMPLE CODE 12345', barcodeValue: 'EXAMPLE CODE 12345', showWarning: false, errorMsg: 'No error' }
+    state = { format: "CODE128", BarcodeExists: false, input: 'EXAMPLE CODE 12345', barcodeValue: 'EXAMPLE CODE 12345', showWarning: false, errorMsg: 'No error' }
 
     generateBarcode = (val, format) => {
-        JsBarcode('#barcode', val, { format: format, fontOptions: "bold", font: "Open Sans" });
+        JsBarcode('#barcode', val, { format: format, fontOptions: "bold" });
     }
 
     componentDidMount() {
@@ -24,6 +24,7 @@ export default class Input extends Component {
     }
 
     handleSubmit = e => {
+        const regexPattern = /[0 - 9]/;
         e.preventDefault();
         const defaultValue = 'EXAMPLE CODE 12345';
         if (e.target.input.value.length > 50) {
@@ -32,15 +33,26 @@ export default class Input extends Component {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
         } else if (e.target.input.value.length < 1 | e.target.input.value.length === '') {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Please enter a value' })
-            this.generateBarcode(this.state.input, this.state.format);
-        } else {
-            this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value.toUpperCase(), showWarning: false })
+            this.generateBarcode(this.state.input);
+        } else if (e.target.format.value === 'ITF14' & !regexPattern.test(e.target.input.value)) {
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must only contain digits' })
+        } else if (e.target.format.value === 'ITF14' & e.target.input.value.length !== 13) {
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must be exactly 13 digits' })
+        } else if (this.state.format === 'ITF14' & !regexPattern.test(this.state.input)) {
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must only contain digits' })
+        }
+        else {
+            this.setState({ format: e.target.format.value, BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value.toUpperCase(), showWarning: false, errorMsg: '' });
+            console.log(this.state.input, this.state.format, e.target.format.value)
             this.generateBarcode(this.state.input, this.state.format);
             document.title = `BRCODIFY | ${this.state.input}`
         }
     }
 
+
+
     handleChange = e => {
+        const regexPattern = /[0 - 9]/;
         e.preventDefault();
         const defaultValue = 'EXAMPLE CODE 12345';
         if (e.target.value.length > 50) {
@@ -49,14 +61,43 @@ export default class Input extends Component {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
         } else if (e.target.value.length < 1 | e.target.value.length === '') {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: false, errorMsg: 'Please enter a value' })
-        } else {
+        }
+        //  else if (this.state.format === 'ITF14' & !regexPattern.test(e.target.value)) {
+        //     this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must only contain digits' })
+        // } else if (this.state.format === 'ITF14' & e.target.value.length !== 13) {
+        //     this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must be exactly 13 digits' })
+        // }
+        else {
             this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.value.toUpperCase(), showWarning: false })
+        }
+    }
+
+    handleSelect = e => {
+        const defaultCodeType = "CODE128";
+        if (e.target.value === defaultCodeType) {
+            this.setState({ format: defaultCodeType })
+        } else {
+            this.setState({ format: e.target.value })
         }
     }
 
 
 
     render() {
+        const auto = '(Auto)';
+        const CODE128 = 'CODE128';
+        const CODE39 = 'CODE39';
+        const CODE128A = 'CODE128A';
+        const CODE128B = 'CODE128B';
+        const CODE128C = 'CODE128C';
+        // ITF14 requires input validation for exactly 13 numbers only (14th is calculated checksum)
+        const ITF14 = 'ITF14';
+        // MSI requires a check on input for digits only between 0-9
+        // const MSI = 'MSI'
+        // const MSI = 'MSI10'
+        // const MSI = 'MSI11'
+        // const MSI = 'MSI1010'
+        // const MSI = 'MSI1110'
         const { showWarning, errorMsg } = this.state;
         return (
             <>
@@ -69,6 +110,20 @@ export default class Input extends Component {
                         autoComplete="off"
                         onChange={this.handleChange}
                     />
+                    <select name="format" onChange={this.handleSelect}>
+                        <optgroup label='CODE128 Series'>
+                            <option value={CODE128}>{CODE128} {auto}</option>
+                            <option value={CODE128A}>{CODE128A}</option>
+                            <option value={CODE128B}>{CODE128B}</option>
+                            <option value={CODE128C}>{CODE128C}</option>
+                        </optgroup>
+                        <optgroup label='CODE39 Series'>
+                            <option value={CODE39}>{CODE39}</option>
+                        </optgroup>
+                        <optgroup label='ITF-14 Series'>
+                            <option value={ITF14}>{ITF14}</option>
+                        </optgroup>
+                    </select>
                     {showWarning && (<div id="warning" className="warning">{errorMsg}</div>)}
                     <button className="btn">Generate barcode</button>
                 </form>

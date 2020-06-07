@@ -90,6 +90,19 @@ input {
   font-family: inherit;
 }
 
+select {
+  margin-bottom: 1vh;
+  height: 2.2rem;
+  width: 70%;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  outline: 0;
+  padding-left: 0.5rem;
+  font-family: inherit;
+}
+
 .warning {
   display: flex;
   flex-direction: column;
