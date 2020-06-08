@@ -24,25 +24,25 @@ export default class Input extends Component {
     }
 
     handleSubmit = e => {
-        const regexPattern = /[0 - 9]/;
+        const regexPattern = new RegExp("[^0-9]", "g");
         e.preventDefault();
         const defaultValue = 'EXAMPLE CODE 12345';
+        const ITF14 = 'ITF14'
         if (e.target.input.value.length > 50) {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot be longer than 50 characters' })
         } else if (e.target.input.value.startsWith(' ')) {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Code cannot start with a blank space' })
-        } else if (e.target.input.value.length < 1 | e.target.input.value.length === '') {
+        } else if (this.state.format === ITF14 & this.state.input.length !== 13) {
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must be exactly 13 digits' })
+        } else if (this.state.format === ITF14 & regexPattern.test(this.state.input)) {
+            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must only contain digits' })
+        }
+        else if (e.target.input.value.length < 1 | e.target.input.value.length === '') {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'Please enter a value' })
             this.generateBarcode(this.state.input);
-        } else if (e.target.format.value === 'ITF14' & !regexPattern.test(e.target.input.value)) {
-            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must only contain digits' })
-        } else if (e.target.format.value === 'ITF14' & e.target.input.value.length !== 13) {
-            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must be exactly 13 digits' })
-        } else if (this.state.format === 'ITF14' & !regexPattern.test(this.state.input)) {
-            this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must only contain digits' })
         }
         else {
-            this.setState({ format: e.target.format.value, BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value.toUpperCase(), showWarning: false, errorMsg: '' });
+            this.setState({ format: e.target.format.value, BarcodeExists: true, barcodeValue: this.state.input, input: e.target.input.value.toString().toUpperCase(), showWarning: false, errorMsg: '' });
             console.log(this.state.input, this.state.format, e.target.format.value)
             this.generateBarcode(this.state.input, this.state.format);
             document.title = `BRCODIFY | ${this.state.input}`
@@ -52,7 +52,7 @@ export default class Input extends Component {
 
 
     handleChange = e => {
-        const regexPattern = /[0 - 9]/;
+
         e.preventDefault();
         const defaultValue = 'EXAMPLE CODE 12345';
         if (e.target.value.length > 50) {
@@ -62,13 +62,8 @@ export default class Input extends Component {
         } else if (e.target.value.length < 1 | e.target.value.length === '') {
             this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: false, errorMsg: 'Please enter a value' })
         }
-        //  else if (this.state.format === 'ITF14' & !regexPattern.test(e.target.value)) {
-        //     this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must only contain digits' })
-        // } else if (this.state.format === 'ITF14' & e.target.value.length !== 13) {
-        //     this.setState({ BarcodeExists: false, barcodeValue: defaultValue, input: defaultValue, showWarning: true, errorMsg: 'An ITF-14 code must be exactly 13 digits' })
-        // }
         else {
-            this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.value.toUpperCase(), showWarning: false })
+            this.setState({ BarcodeExists: true, barcodeValue: this.state.input, input: e.target.value.toString().toUpperCase(), showWarning: false })
         }
     }
 

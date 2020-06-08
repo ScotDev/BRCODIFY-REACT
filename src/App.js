@@ -7,7 +7,7 @@ import Credits from './components/Layout/Credits';
 
 export default class App extends Component {
 
-  state = { format: 'CODE128' }
+
 
   render() {
     return (
@@ -17,7 +17,7 @@ export default class App extends Component {
           <div className="content">
             <h1>BRCODIFY</h1>
             <h2>A simple barcode generator</h2>
-            <h3>Format: {this.state.format}</h3>
+            {/* <h3>Format: CODE128</h3> */}
             <Input></Input>
           </div>
           <Credits></Credits>
