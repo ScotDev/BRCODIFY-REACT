@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import JsBarcode from 'jsbarcode'
+
+import JsBarcode from 'jsbarcode';
+import FileSaver, { saveAs } from 'file-saver';
 
 export default class Input extends Component {
 
@@ -21,6 +23,12 @@ export default class Input extends Component {
         newWindow.document.open();
         newWindow.document.write(`<img src='${img}' onload='window.print()' />`)
         console.log('Barcode printed:', this.state.barcodeValue);
+    }
+
+    downloadBarcode = () => {
+        const canvas = document.getElementById('barcode');
+        const img = canvas.toDataURL('image/png');
+        FileSaver.saveAs(img, this.state.barcodeValue, { type: "image/png" })
     }
 
     handleSubmit = e => {
@@ -123,7 +131,10 @@ export default class Input extends Component {
                     <button className="btn">Generate barcode <i class="ri-arrow-right-s-line"></i></button>
                 </form>
                 <canvas id="barcode"></canvas>
-                <button className="btn" id="PrintBtn" onClick={this.printBarcode}>Print barcode <i class="ri-printer-line"></i></button>
+                <div className="btn-group">
+                    <button className="btn" onClick={this.printBarcode}><i class="ri-printer-line"></i></button>
+                    <button className="btn" onClick={this.downloadBarcode}><i class="ri-download-line"></i></button>
+                </div>
             </>
         )
     }

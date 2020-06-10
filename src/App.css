@@ -6,6 +6,7 @@
   --dark-mode-primary: #141a1f;
   --dark-mode-secondary: #0c1821;
   --dark-mode-accent: #5fbaa7;
+  --shadow-color: #c4c2c2;
 }
 * {
   box-sizing: border-box;
@@ -113,6 +114,7 @@ select {
   outline: 0;
   padding-left: 0.5rem;
   font-family: inherit;
+  color: var(--dark-mode-primary);
 }
 
 .warning {
@@ -132,23 +134,34 @@ select {
   border: 0;
   padding: 0.6rem 0.9rem;
   font-size: 1rem;
-  -moz-box-shadow: 3px 3px 5px #ccc;
-  -webkit-box-shadow: 3px 3px 5px #ccc;
-  box-shadow: 3px 3px 5px #ccc;
+  -moz-box-shadow: 4px 4px 6px var(--shadow-color);
+  -webkit-box-shadow: 4px 4px 6px var(--shadow-color);
+  box-shadow: 4px 4px 6px var(--shadow-color);
   margin-bottom: 3vh;
   width: fit-content;
 }
 
 .btn:hover {
-  -moz-box-shadow: 6px 6px 10px #ccc;
-  -webkit-box-shadow: 6px 6px 10px #ccc;
-  box-shadow: 6px 6px 10px #ccc;
+  -moz-box-shadow: 7px 7px 11px var(--shadow-color);
+  -webkit-box-shadow: 7px 7px 11px var(--shadow-color);
+  box-shadow: 7px 7px 11px var(--shadow-color);
   cursor: pointer;
+  transition: all 0.15s;
+  transform: scale(1.01);
 }
 
 .btn i {
   font-size: 1.5rem;
   vertical-align: middle;
+  margin-left: 0.1rem;
+}
+
+.btn-group {
+  display: flex;
+}
+
+.btn-group button {
+  margin: 0 0.5vh 3vh 0.5vh;
 }
 
 canvas {
@@ -244,6 +257,10 @@ canvas {
     width: 80vw;
   }
 
+  .brand-logo {
+    margin-bottom: 1vh;
+  }
+
   h2 {
     font-size: 0.8rem;
   }
@@ -257,6 +274,11 @@ canvas {
     padding-left: 0.4rem;
     margin-bottom: 1.5vh;
   }
+
+  select {
+    height: 1.9rem;
+    font-size: 0.8rem;
+  }
   form {
     width: 95%;
   }
@@ -264,9 +286,9 @@ canvas {
     font-size: 0.7rem;
   }
   .btn {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-    margin-bottom: 2.5vh;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.85rem;
+    margin: 2vh 0 2vh 0;
     width: fit-content;
   }
   canvas {
@@ -302,12 +324,12 @@ canvas {
     font-size: 0.8rem;
     padding-left: 0.4rem;
   }
-  .btn {
+  /* .btn {
     padding: 0.4rem 0.85rem;
     font-size: 0.9rem;
     margin-bottom: 2.5vh;
     width: fit-content;
-  }
+  } */
   canvas {
     max-width: 95%;
     width: fit-content;
