@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
 
+import logo from './img/logo.png';
+
 import Input from './components/Functional/Input'
 import Credits from './components/Layout/Credits';
 
 
 export default class App extends Component {
-
-
 
   render() {
     return (
@@ -15,9 +15,11 @@ export default class App extends Component {
         <div className="skewed"></div>
         <div className="container">
           <div className="content">
-            <h1>BRCODIFY</h1>
+            {/* <h1>BRCODIFY</h1> */}
+            <div className="brand-logo">
+              <img src={logo} alt="Brand logo"></img>
+            </div>
             <h2>A simple barcode generator</h2>
-            {/* <h3>Format: CODE128</h3> */}
             <Input></Input>
           </div>
           <Credits></Credits>

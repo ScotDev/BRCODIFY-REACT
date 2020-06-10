@@ -66,13 +66,20 @@ body {
   z-index: 2;
 }
 
-h1 {
-  font-size: 2.3rem;
-  border-bottom: 2px solid var(--primary-accent);
+.brand-logo {
+  width: 50%;
+  height: fit-content;
+  padding-bottom: 0.6rem;
+  border-bottom: 4px solid var(--primary-accent);
+}
+
+.brand-logo img {
+  width: 100%;
+  height: 100%;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 form {
@@ -139,6 +146,11 @@ select {
   cursor: pointer;
 }
 
+.btn i {
+  font-size: 1.5rem;
+  vertical-align: middle;
+}
+
 canvas {
   min-height: 8rem;
   max-width: 60%;
@@ -154,7 +166,15 @@ canvas {
 .credits a {
   text-decoration: none;
   color: var(--primary-accent);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
+}
+.credits a:hover {
+  border-bottom: 1px solid var(--primary-accent);
+}
+
+.credits i {
+  font-size: 1rem;
+  vertical-align: text-top;
 }
 
 .credits span {
@@ -181,9 +201,6 @@ canvas {
   .content {
     width: 85vw;
     height: 75vh;
-  }
-  h1 {
-    font-size: 1.8rem;
   }
   h2 {
     font-size: 1.2rem;
@@ -226,9 +243,7 @@ canvas {
   .content {
     width: 80vw;
   }
-  h1 {
-    font-size: 1.2rem;
-  }
+
   h2 {
     font-size: 0.8rem;
   }
@@ -273,10 +288,6 @@ canvas {
   .content {
     width: 85vw;
     height: 72vh;
-  }
-  h1 {
-    font-size: 1.2rem;
-    margin-bottom: 1vh;
   }
   h2 {
     font-size: 1rem;
