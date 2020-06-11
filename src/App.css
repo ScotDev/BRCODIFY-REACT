@@ -129,7 +129,25 @@ select {
   font-family: inherit;
   border-radius: 6px;
   outline: 0;
-  background-color: var(--primary-green);
+
+  background: rgb(120, 175, 118);
+  background: -moz-linear-gradient(
+    90deg,
+    rgba(120, 175, 118, 1) 0%,
+    rgba(87, 133, 86, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(120, 175, 118, 1) 0%,
+    rgba(87, 133, 86, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(120, 175, 118, 1) 0%,
+    rgba(87, 133, 86, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#78af76",endColorstr="#578556",GradientType=1);
+
   color: #fff;
   border: 0;
   padding: 0.6rem 0.9rem;
@@ -146,7 +164,7 @@ select {
   -webkit-box-shadow: 7px 7px 11px var(--shadow-color);
   box-shadow: 7px 7px 11px var(--shadow-color);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.1s;
   transform: scale(1.01);
 }
 
