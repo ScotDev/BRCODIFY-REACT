@@ -128,7 +128,7 @@ export default class Input extends Component {
                         </optgroup>
                     </select>
                     {showWarning && (<div id="warning" className="warning">{errorMsg}</div>)}
-                    <button className="btn">Generate barcode <i class="ri-arrow-right-s-line"></i></button>
+                    <button className="btn">Generate <i class="ri-arrow-right-s-line"></i></button>
                 </form>
                 <canvas id="barcode"></canvas>
                 <div className="btn-group">
