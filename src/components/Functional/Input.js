@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import JsBarcode from 'jsbarcode';
-import FileSaver, { saveAs } from 'file-saver';
+import FileSaver from 'file-saver';
 
 export default class Input extends Component {
 
