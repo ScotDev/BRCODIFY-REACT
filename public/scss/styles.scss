@@ -16,14 +16,9 @@ body {
   margin: 0;
   overflow: hidden;
 
-  // $primary-accent: #5fbaa7;
   $primary-accent: #78af76;
   $primary-green: #578556;
   $white: #fff;
-
-  $dark-mode-primary: #141a1f;
-  $dark-mode-secondary: #0c1821;
-  $dark-mode-accent: #5fbaa7;
 
   .skewed {
     position: absolute;
@@ -70,7 +65,7 @@ body {
 
       .brand-logo {
         width: 50%;
-        height: fit-content;
+        height: 10%;
         padding-bottom: 0.6rem;
         border-bottom: 4px solid $primary-accent;
         margin: 0 0 1rem 0;
@@ -107,7 +102,7 @@ body {
         }
 
         select {
-          margin-bottom: 1vh;
+          margin-bottom: 2vh;
           height: 2.2rem;
           width: 70%;
           border-radius: 6px;
@@ -132,6 +127,7 @@ body {
         font-family: inherit;
         border-radius: 6px;
         outline: 0;
+        line-height: 1.5;
 
         background: $primary-green;
         background: -moz-linear-gradient(
@@ -153,12 +149,8 @@ body {
 
         color: $white;
         border: 0;
-        padding: 0.6rem 0.9rem;
+        padding: 0.4rem 0.75rem;
         font-size: 1rem;
-        // -moz-box-shadow: 5px 4px 8px 1px $shadow-color;
-        // -webkit-box-shadow: 5px 4px 8px 1px $shadow-color;
-        // box-shadow: 5px 4px 8px 1px $shadow-color;
-
         -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
@@ -276,23 +268,19 @@ body {
         }
         .btn {
           font-size: 1.6rem;
-          padding: 0.9rem 1.4rem;
+          padding: 0.7rem 1.2rem;
+
           i {
             font-size: 1.8rem;
           }
         }
-        // .btn-group {
-        //   button {
-        //     // padding: 0.5rem 0.8rem 0.7rem 0.8rem;
-        //   }
-        // }
       }
     }
   }
 }
 
 // Large mobile screens, iPhone X, 6, Pixel 2
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 650px) {
   body {
     .container {
       .content {
@@ -321,8 +309,8 @@ body {
         }
 
         .btn {
-          font-size: 1rem;
-          padding: 0.5rem 0.8rem;
+          font-size: 0.95rem;
+          padding: 0.3rem 0.6rem;
           i {
             font-size: 1.35rem;
           }
