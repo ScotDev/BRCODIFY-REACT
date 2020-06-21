@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600&display=swap');
+
+$primary-bg: #02070f;
+$secondary-bg: #6b6d76;
+$primary-accent: #f0386b;
+$primary-text: #f3fcf0;
+
+$warning-red: #e03749;
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-field {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.1em;
+  border-radius: 25px;
+  background-color: $secondary-bg;
+  color: $primary-text;
+  border: 1px solid $primary-text;
+  width: 15.26em;
+  height: 3.1em;
+  margin-bottom: 1em;
+  outline: 0;
+  padding: 0.4em 1em;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.form-field:hover,
+.form-field:active {
+  transform: translateY(-2px);
+}
+
+.text-input {
+  border-radius: 25px;
+}
+
+.dropdown-select {
+  border-radius: 25px;
+}
+
+.warning {
+  color: $warning-red;
+  margin-bottom: 1em;
+  font-size: 1.1em;
+}
+
+::placeholder {
+  font-size: 1.1em;
+  color: $primary-text;
+}
+
+::-moz-placeholder {
+  font-size: 1.1em;
+  color: $primary-text;
+}
+
+::-webkit-input-placeholder {
+  font-size: 1.1em;
+  color: $primary-text;
+}

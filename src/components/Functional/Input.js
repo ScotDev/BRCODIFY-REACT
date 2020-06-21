@@ -107,13 +107,14 @@ export default class Input extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
+                        className="form-field text-input"
                         name="input"
                         placeholder="Example code 12345"
                         autoFocus
                         autoComplete="off"
                         onChange={this.handleChange}
                     />
-                    <select name="format" onChange={this.handleSelect}>
+                    <select name="format" className="form-field dropdown-select" onChange={this.handleSelect}>
                         <optgroup label='CODE128 Series'>
                             <option value={CODE128}>{CODE128} {auto}</option>
                             <option value={CODE128A}>{CODE128A}</option>
@@ -128,12 +129,12 @@ export default class Input extends Component {
                         </optgroup>
                     </select>
                     {showWarning && (<div id="warning" className="warning">{errorMsg}</div>)}
-                    <button className="btn">Generate <i class="ri-arrow-right-s-line"></i></button>
+                    <button className="btn">Generate <i className="btn__icon ri-arrow-right-s-line"></i></button>
                 </form>
                 <canvas id="barcode"></canvas>
                 <div className="btn-group">
-                    <button className="btn" onClick={this.printBarcode}><i class="ri-printer-line"></i></button>
-                    <button className="btn" onClick={this.downloadBarcode}><i class="ri-download-line"></i></button>
+                    <button className="btn btn--icon-only" onClick={this.printBarcode}><i className="btn__icon ri-printer-line"></i></button>
+                    <button className="btn btn--icon-only" onClick={this.downloadBarcode}><i className="btn__icon ri-download-line"></i></button>
                 </div>
             </>
         )
