@@ -32,7 +32,7 @@ body {
   justify-content: center;
   text-align: center;
   padding: 1em;
-  margin-top: 2.5em;
+  margin-top: 3em;
 }
 
 .page-title {
@@ -94,13 +94,15 @@ canvas {
   border-radius: 25px;
   border: 1px solid $primary-text;
   margin: 1em 0;
-  background-color: $secondary-bg;
+  background-color: #fff;
+  padding: 0.3em;
   max-width: 95%;
 }
 
 .credits {
   font-size: 1.1em;
   margin-top: 3em;
+  line-height: 1.5;
 }
 
 .credits__not-link {
@@ -125,15 +127,29 @@ canvas {
 
 @media only screen and (max-width: 750px) {
   html {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 @media only screen and (max-width: 650px) {
+  html {
+    font-size: 13px;
+  }
   .content {
-    margin: 0 0.2em;
+    margin: 2em 0.2em;
   }
 
   .credits {
     margin-top: 0.5em;
+  }
+}
+@media only screen and (max-width: 375px) {
+  html {
+    font-size: 12px;
+  }
+  .page-title {
+    margin: 0;
+  }
+  .content {
+    margin-top: 0;
   }
 }
