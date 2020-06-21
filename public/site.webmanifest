@@ -1,13 +1,7 @@
 {
-  "name": "BRCODIFY",
+  "name": "BRCODIFY barcode generator",
   "short_name": "BRCODIFY",
   "icons": [
-    {
-      "src": "/maskable_icon.png",
-      "sizes": "196x196",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -17,9 +11,15 @@
       "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+    {
+      "src": "/maskable_icon.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
-  "theme_color": "#578556",
-  "background_color": "#578556",
+  "theme_color": "#02070f",
+  "background_color": "#02070f",
   "display": "standalone"
 }
