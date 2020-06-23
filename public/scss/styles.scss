@@ -97,6 +97,7 @@ canvas {
   background-color: #fff;
   padding: 0.3em;
   max-width: 95%;
+  min-height: 120px;
 }
 
 .credits {
@@ -145,6 +146,9 @@ canvas {
 @media only screen and (max-width: 375px) {
   html {
     font-size: 12px;
+  }
+  canvas {
+    max-width: 90%;
   }
   .page-title {
     margin: 0;
