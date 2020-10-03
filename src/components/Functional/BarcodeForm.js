@@ -7,7 +7,7 @@ import FileSaver from 'file-saver';
 
 export default function FormComponentHooks() {
 
-    const [format, setformat] = useState("CODE128")
+    const [codeFormat, setCodeFormat] = useState("CODE128")
     const [barcodeValue, setbarcodeValue] = useState("EXAMPLE CODE 12345")
     const [inputValue, setinputValue] = useState("EXAMPLE CODE 12345")
     const [message, setMessage] = useState(null);
@@ -21,11 +21,6 @@ export default function FormComponentHooks() {
     const defaultValue = 'EXAMPLE CODE 12345';
     // ITF14 requires input validation for exactly 13 numbers only (14th is calculated checksum)
     const ITF14 = 'ITF14';
-    // MSI requires a check on input for digits only between 0-9
-    // const MSI = 'MSI'
-    // const MSI = 'MSI10'
-    // const MSI = 'MSI11'
-    // const MSI = 'MSI1010'
 
     const regexPattern = new RegExp("[^0-9]", "g");
 
@@ -62,13 +57,13 @@ export default function FormComponentHooks() {
         } else if (inputValue.startsWith(' ')) {
             setMessage("Value cannot start with a blank space");
             setbarcodeValue(defaultValue)
-        } else if (format === ITF14 & inputValue.length !== 13) {
+        } else if (codeFormat === ITF14 & inputValue.length !== 13) {
             setMessage("An ITF-14 code must be exactly 13 digits")
             setbarcodeValue(defaultValue)
-        } else if (format === ITF14 & inputValue.length !== 13) {
+        } else if (codeFormat === ITF14 & inputValue.length !== 13) {
             setMessage("'An ITF-14 code must be exactly 13 digits'")
             setbarcodeValue(defaultValue)
-        } else if (format === ITF14 & regexPattern.test(inputValue)) {
+        } else if (codeFormat === ITF14 & regexPattern.test(inputValue)) {
             setMessage("An ITF-14 code must only contain digits")
             setbarcodeValue(defaultValue)
         } else {
@@ -94,13 +89,13 @@ export default function FormComponentHooks() {
                 console.log("Value cannot start with blank space")
                 setMessage("Value cannot start with a blank space");
                 setbarcodeValue(defaultValue)
-            } else if (format === ITF14 & inputValue.length !== 13) {
+            } else if (codeFormat === ITF14 & inputValue.length !== 13) {
                 setMessage("An ITF-14 code must be exactly 13 digits")
                 setbarcodeValue(defaultValue)
-            } else if (format === ITF14 & inputValue.length !== 13) {
+            } else if (codeFormat === ITF14 & inputValue.length !== 13) {
                 setMessage("'An ITF-14 code must be exactly 13 digits'")
                 setbarcodeValue(defaultValue)
-            } else if (format === ITF14 & regexPattern.test(inputValue)) {
+            } else if (codeFormat === ITF14 & regexPattern.test(inputValue)) {
                 setMessage("An ITF-14 code must only contain digits")
                 setbarcodeValue(defaultValue)
             }
@@ -114,7 +109,7 @@ export default function FormComponentHooks() {
     // Generate barcode
     useEffect(
         () => {
-            JsBarcode("#barcode", barcodeValue, { format: format, fontOptions: "bold", font: "monospace" })
+            JsBarcode("#barcode", barcodeValue, { format: codeFormat, fontOptions: "bold", font: "monospace" })
         }, [barcodeValue]
     )
 
@@ -149,7 +144,7 @@ export default function FormComponentHooks() {
                             }
                         />
 
-                        <Select name="format" placeholder="Select barcode type" defaultValue={CODE128} variant="outline" focusBorderColor="pink.500" bg="cyan.50" size="lg" onChange={e => { setformat(e.target.value) }}>
+                        <Select name="format" placeholder="Select barcode type" defaultValue={CODE128} variant="outline" focusBorderColor="pink.500" bg="cyan.50" size="lg" onChange={e => { setCodeFormat(e.target.value) }}>
 
                             <optgroup label='CODE128 Series'>
                                 <option value={CODE128}>{CODE128} {auto}</option>
