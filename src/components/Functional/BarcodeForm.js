@@ -60,9 +60,6 @@ export default function FormComponentHooks() {
         } else if (codeFormat === ITF14 & inputValue.length !== 13) {
             setMessage("An ITF-14 code must be exactly 13 digits")
             setbarcodeValue(defaultValue)
-        } else if (codeFormat === ITF14 & inputValue.length !== 13) {
-            setMessage("'An ITF-14 code must be exactly 13 digits'")
-            setbarcodeValue(defaultValue)
         } else if (codeFormat === ITF14 & regexPattern.test(inputValue)) {
             setMessage("An ITF-14 code must only contain digits")
             setbarcodeValue(defaultValue)
@@ -90,9 +87,6 @@ export default function FormComponentHooks() {
                 setMessage("Value cannot start with a blank space");
                 setbarcodeValue(defaultValue)
             } else if (codeFormat === ITF14 & inputValue.length !== 13) {
-                setMessage("An ITF-14 code must be exactly 13 digits")
-                setbarcodeValue(defaultValue)
-            } else if (codeFormat === ITF14 & inputValue.length !== 13) {
                 setMessage("'An ITF-14 code must be exactly 13 digits'")
                 setbarcodeValue(defaultValue)
             } else if (codeFormat === ITF14 & regexPattern.test(inputValue)) {
@@ -103,7 +97,7 @@ export default function FormComponentHooks() {
                 setMessage(null)
             }
         },
-        [inputValue] // eslint-disable-line react-hooks/exhaustive-deps
+        [inputValue] // eslint-disable-line react-hooks/exhaustive-depsr
     );
 
     // Generate barcode
