@@ -103,14 +103,14 @@ export default function FormComponentHooks() {
                 setMessage(null)
             }
         },
-        [inputValue]
+        [inputValue] // eslint-disable-line react-hooks/exhaustive-deps
     );
 
     // Generate barcode
     useEffect(
         () => {
             JsBarcode("#barcode", barcodeValue, { format: codeFormat, fontOptions: "bold", font: "monospace" })
-        }, [barcodeValue]
+        }, [barcodeValue] // eslint-disable-line react-hooks/exhaustive-deps
     )
 
 
