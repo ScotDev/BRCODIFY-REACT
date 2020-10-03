@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './styles.min.css'
+import { ThemeProvider, CSSReset, Box, Text } from '@chakra-ui/core'
 
-import Input from './components/Functional/Input'
+import BarcodeForm from './components/Functional/BarcodeForm'
 import Credits from './components/Layout/Credits';
 
 
@@ -9,16 +9,20 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App" >
-        <div className="container">
-          <div className="content">
-            <h1 className="page-title">BRCODIFY</h1>
-            <h2 className="page-subtitle">A simple barcode generator.</h2>
-            <Input></Input>
+      <ThemeProvider>
+        <CSSReset />
+        <div className="App" >
+
+          <Box bg="gray.900" minHeight="100vh" display="flex" alignItems="center" justifyContent="flex-start" flexDirection="column" p={2} textAlign="center">
+            <Text fontSize="5xl" color="cyan.50" mt={2} mb={4}>BRCODIFY</Text>
+            <Text fontSize="3xl" color="cyan.50" mb={6}>A simple barcode generator.</Text>
+
+            <BarcodeForm></BarcodeForm>
             <Credits></Credits>
-          </div>
+          </Box>
+
         </div>
-      </div>
+      </ThemeProvider>
     )
   }
 }
