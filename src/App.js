@@ -13,7 +13,7 @@ export default class App extends Component {
         <CSSReset />
         <div className="App" >
 
-          <Box bg="gray.900" minHeight="100vh" display="flex" alignItems="center" justifyContent="flex-start" flexDirection="column" p={2} textAlign="center">
+          <Box bg="gray.900" minHeight="100vh" display="flex" alignItems="center" justifyContent="center" flexDirection="column" p={2} textAlign="center">
             <Text fontSize="5xl" color="cyan.50" mt={2} mb={4}>BRCODIFY</Text>
             <Text fontSize="3xl" color="cyan.50" mb={6}>A simple barcode generator.</Text>
 
