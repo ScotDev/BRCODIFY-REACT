@@ -24,14 +24,10 @@ export default function FormComponentHooks() {
 
     const regexPattern = new RegExp("[^0-9]", "g");
 
-
-
     const downloadBarcode = () => {
-
         const canvas = document.getElementById('barcode');
         const img = canvas.toDataURL('image/png');
         FileSaver.saveAs(img, barcodeValue, { type: "image/png" })
-
     }
 
     const printBarcode = () => {
@@ -97,7 +93,7 @@ export default function FormComponentHooks() {
                 setMessage(null)
             }
         },
-        [inputValue] // eslint-disable-line react-hooks/exhaustive-depsr
+        [inputValue]        // eslint-disable-line react-hooks/exhaustive-deps
     );
 
     // Generate barcode
@@ -109,7 +105,7 @@ export default function FormComponentHooks() {
 
 
     return (
-        <Box p={4} display="flex" alignItems="center" justifyContent="flex-start" flexDirection="column" maxW="95%">
+        <Box p={4} display="flex" alignItems="center" justifyContent="flex-start" flexDirection="column" maxW="95%" width="450px">
 
             <Flex as="form" w="100%" display="flex" alignItems="center" flexDirection="column" onSubmit={e =>
                 handleSubmit(e)
